@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CONFIELECTRO - Baraja de Elementos</title>
+
+<style>
+/* === PALETA DE COLORES DEL LOGO === */
+:root {
+    --c-rosa: #ff4be1;
+    --c-azul: #00d4ff;
+    --c-azul2: #00b3ff;
+    --c-morado: #9b4dff;
+    --c-verde: #39ffb1;
+    --c-amarillo: #ffeb3b;
+    --c-tarjeta: rgba(255,255,255,0.15);
+}
+
+/* === BODY === */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: radial-gradient(circle at center, #0c0020 0%, #000015 100%);
+    text-align: center;
+    padding: 40px;
+    color: white;
+    margin: 0;
+}
+
+/* === LOGO === */
+.logo {
+    width: 250px;
+    margin-bottom: 10px;
+}
+
+/* === TÍTULO === */
+h1 {
+    font-size: 60px;
+    font-weight: 900;
+    letter-spacing: 5px;
+    margin-bottom: 25px;
+    background: linear-gradient(90deg, var(--c-rosa), var(--c-azul), var(--c-morado), var(--c-verde));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* === BOTONES === */
+.buttons {
+    margin-bottom: 35px;
+}
+
+button {
+    padding: 15px 35px;
+    font-size: 22px;
+    font-weight: bold;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    color: #000;
+    margin: 10px;
+    background: linear-gradient(135deg, var(--c-amarillo), var(--c-verde));
+    box-shadow: 0 0 15px var(--c-verde);
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+/* === TARJETA === */
+.card {
+    width: 300px;
+    margin: auto;
+    background: var(--c-tarjeta);
+    padding: 25px;
+    border-radius: 20px;
+    border: 2px solid var(--c-azul2);
+    color: white;
+}
+
+/* === TIPOGRAFÍA === */
+.atomic-number {
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, var(--c-amarillo), var(--c-rosa));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.symbol {
+    font-size: 100px;
+    font-weight: bold;
+    margin: 10px 0;
+    background: linear-gradient(180deg, var(--c-azul), var(--c-morado));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.name {
+    font-size: 28px;
+    margin-top: 10px;
+    background: linear-gradient(90deg, var(--c-verde), var(--c-rosa));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGO PRINCIPAL -->
+<img src="./logo.png" alt="CONFIELECTRO" class="logo">
+
+<h1>CONFIELECTRO</h1>
+
+<div class="buttons">
+    <button onclick="modoBasico()">Modo Básico</button>
+    <button onclick="modoExperto()">Nivel Experto</button>
+</div>
+
+<div class="card" id="card">
+    <div class="atomic-number" id="atomicNumber">#</div>
+    <div class="symbol" id="symbol">?</</div>
+    <div class="name" id="name">Nombre</div>
+</div>
+
+<script>
+const elementos = [
+    { num: 1, sim: "H", nombre: "Hidrógeno" },
+    { num: 2, sim: "He", nombre: "Helio" },
+    { num: 3, sim: "Li", nombre: "Litio" },
+    { num: 6, sim: "C", nombre: "Carbono" },
+    { num: 7, sim: "N", nombre: "Nitrógeno" },
+    { num: 8, sim: "O", nombre: "Oxígeno" },
+    { num: 12, sim: "Mg", nombre: "Magnesio" },
+    { num: 17, sim: "Cl", nombre: "Cloro" },
+    { num: 26, sim: "Fe", nombre: "Hierro" }
+];
+
+function obtenerElemento() {
+    return elementos[Math.floor(Math.random() * elementos.length)];
+}
+
+function modoBasico() {
+    let elem = obtenerElemento();
+    document.getElementById("atomicNumber").innerText = elem.num;
+    document.getElementById("symbol").innerText = elem.sim;
+    document.getElementById("name").innerText = elem.nombre;
+}
+
+function modoExperto() {
+    let elem = obtenerElemento();
+    document.getElementById("atomicNumber").innerText = "";
+    document.getElementById("symbol").innerText = elem.sim;
+    document.getElementById("name").innerText = "";
+}
+</script>
+
+</body>
+</html>
